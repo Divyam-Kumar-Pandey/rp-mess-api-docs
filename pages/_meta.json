@@ -1,15 +1,23 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
+  "index": "Menu",
+  "image": "Image Upload",
+  "user": "User",
+  "member": "Hall Member",
+  "noticeboard": "Noticeboard",
+  "verify-email": "Verify Email",
+  "feedback": "Feedback",
+
   "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
+      "title": "Contact ↗",
+      "type": "page"
+  },
+  "about": {
+      "title": "About",
+      "type": "page"
+    },
+  "github_link": {
+      "title": "Github Repository",
+      "href": "https://github.com/Divyam-Kumar-Pandey/rp-mess-website-backend",
+      "newWindow": true
   }
 }
