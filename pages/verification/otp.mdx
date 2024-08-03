@@ -1,21 +1,20 @@
-# User Password Reset API
+# OTP Verification API
 
-## Update User Password
+## Verify OTP and Register User
 
-Update the password of a user based on their roll number.
+Verify the OTP sent to the user's email and register the user.
 
 ### Request
 
 - **Method:** POST
-- **Can be accessed by:** ADMIN, SUPERADMIN
-- **URL:** `/api/user/reset-password`
+- **Can be accessed by:** Any user with a valid temporary token
+- **URL:** `/api/verification/otp`
 - **Headers:**
-  - Authorization: Bearer `<access_token>`
+  - Authorization: Bearer `<temp_token>`
 - **Body:**
   ```json
   {
-    "rollNumber": "123456",
-    "newPassword": "password"
+    "otp": "123456"
   }
   ```
 
@@ -26,7 +25,7 @@ Update the password of a user based on their roll number.
   ```json
   {
     "success": true,
-    "data": "Password updated successfully",
+    "data": "User registered successfully",
     "error": null
   }
   ```
@@ -51,18 +50,18 @@ Update the password of a user based on their roll number.
     {
       "success": false,
       "data": null,
-      "error": "Invalid Request Body. Required fields: rollNumber, newPassword"
+      "error": "Invalid Request Body. Required fields: otp"
     }
     ```
 
-- **User Not Found**
+- **Invalid OTP**
   - **Status: 400 Bad Request**
   - **Body:**
     ```json
     {
       "success": false,
       "data": null,
-      "error": "User does not exist"
+      "error": "Invalid OTP"
     }
     ```
 
@@ -73,9 +72,7 @@ Update the password of a user based on their roll number.
     {
       "success": false,
       "data": null,
-      "error": "<error_message>"
+      "error": "An error occurred while processing your request"
     }
     ```
-  where `<error_message>` contains the details of the server error.
-
 ---

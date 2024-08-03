@@ -1,10 +1,10 @@
 {
+  "user": "User",
   "index": "Menu",
   "image": "Image Upload",
-  "user": "User",
+  "verification": "Verification",
   "member": "Hall Member",
   "noticeboard": "Noticeboard",
-  "verify-email": "Verify Email",
   "feedback": "Feedback",
 
   "contact": {
@@ -14,10 +14,5 @@
   "about": {
       "title": "About",
       "type": "page"
-    },
-  "github_link": {
-      "title": "Github Repository",
-      "href": "https://github.com/Divyam-Kumar-Pandey/rp-mess-website-backend",
-      "newWindow": true
   }
 }

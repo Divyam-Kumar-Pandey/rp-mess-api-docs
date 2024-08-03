@@ -1,0 +1,55 @@
+# Get Temporary User Details API
+
+## Get Temporary User Details
+
+Retrieve the details of a temporary user using a valid temporary token.
+
+### Request
+
+- **Method:** GET
+- **Can be accessed by:** Any user with a valid temporary token
+- **URL:** `/api/verification/user`
+- **Headers:**
+  - Authorization: Bearer `<temp_token>`
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": {
+      "rollNumber": "123456",
+      "email": "user@example.com",
+      "name": "John Doe"
+    },
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "An error occurred while processing your request"
+    }
+    ```
+
+---

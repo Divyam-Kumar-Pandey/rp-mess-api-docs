@@ -1,0 +1,64 @@
+# User Role API
+
+## Get User Role
+
+Retrieve the role of a user based on their authorization token.
+
+### Request
+
+- **Method:** GET
+- **Can be accessed by:** STUDENT, STAFF, ADMIN, SUPERADMIN
+- **URL:** `/api/user/role`
+- **Headers:**
+  - Authorization: Bearer `<access_token>`
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": ['STUDENT', 'STAFF', 'ADMIN', 'SUPERADMIN'],
+    "error": null
+  }
+  ```
+  where `<user_role>` can be one of the following: 'STUDENT', 'STAFF', 'ADMIN', 'SUPERADMIN'.
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **User Not Found**
+  - **Status: 404 Not Found**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "User not found"
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "<error_message>"
+    }
+    ```
+  where `<error_message>` contains the details of the server error.
+
+---

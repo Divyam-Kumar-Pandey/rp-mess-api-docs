@@ -1,0 +1,66 @@
+# Email Verification API
+
+## Send Verification Email
+
+Generate and send a verification code to the user's email.
+
+### Request
+
+- **Method:** GET
+- **Can be accessed by:** Any user with a valid temporary token
+- **URL:** `/api/verification/user`
+- **Headers:**
+  - Authorization: Bearer `<temp_token>`
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": "Email sent successfully",
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Error Sending Email**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Error sending email"
+    }
+    ```
+
+### Code Overview
+
+The code defines an asynchronous GET request handler to send a verification code to the user's email.
+
+1. The token is extracted from the 'Authorization' header.
+2. The presence of the token is checked.
+3. The token is verified using the `verifyTempToken` function.
+4. A verification code is generated.
+5. A connection to the database is established.
+6. The verification code is saved in the `TempUser` collection.
+7. The email address is retrieved from the `TempUser` collection.
+8. The email is sent using Nodemailer with the verification code.
+9. The response is returned indicating the successful email sending.
+10. Appropriate error responses are returned for unauthorized access or email sending failure.
+
+---
