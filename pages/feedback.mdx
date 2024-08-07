@@ -1,1 +1,136 @@
- 
+# Feedback API
+
+## Get Feedback
+
+Retrieve feedback for the authenticated user.
+
+### Request
+
+- **Method:** GET
+- **Can be accessed by:** Users with roles: ADMIN, SUPERADMIN, STUDENT, STAFF
+- **URL:** `/api/feedback`
+- **Headers:**
+  - Authorization: Bearer `<access_token>`
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": [
+      {
+        "id": "feedback_id",
+        "rollNumber": "123456",
+        "subject": "Feedback Subject",
+        "body": "Feedback Body",
+        "imgUrl": "https://example.com/image.jpg",
+        "createdAt": "2024-08-03T12:34:56Z"
+      },
+      ...
+    ],
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "An error occurred while processing your request"
+    }
+    ```
+
+---
+
+## Add Feedback
+
+Add a new feedback entry.
+
+### Request
+
+- **Method:** POST
+- **Can be accessed by:** Users with roles: ADMIN, SUPERADMIN, STUDENT, STAFF
+- **URL:** `/api/feedback`
+- **Headers:**
+  - Authorization: Bearer `<token>`
+- **Body:**
+  ```json
+  {
+    "subject": "Feedback Subject",
+    "body": "Feedback Body",
+    "imgUrl": "https://example.com/image.jpg" // Optional
+  }
+  ```
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": {
+      "_id": "feedback_id",
+      "rollNumber": "123456",
+      "subject": "Feedback Subject",
+      "body": "Feedback Body",
+      "imgUrl": "https://example.com/image.jpg",
+      "createdAt": "2024-08-03T12:34:56Z"
+    },
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Invalid Request Body**
+  - **Status: 400 Bad Request**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Invalid Request Body. Required fields: subject, body"
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "An error occurred while processing your request"
+    }
+    ```
+---
