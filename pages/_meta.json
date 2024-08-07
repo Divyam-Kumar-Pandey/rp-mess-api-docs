@@ -1,12 +1,11 @@
 {
-  "user": "User",
   "index": "Menu",
+  "user": "User",
   "image": "Image Upload",
   "verification": "Verification",
   "member": "Hall Member",
   "noticeboard": "Noticeboard",
   "feedback": "Feedback",
-
   "contact": {
       "title": "Contact ↗",
       "type": "page"
