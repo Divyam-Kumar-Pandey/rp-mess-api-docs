@@ -81,10 +81,13 @@ Add a new menu item.
 - Body:
   ```json
   {
-    "day": "MONDAY",                         (required)
-    "timeSlot": "BREAKFAST",                 (required)
-    "name": "Masala Dosa",                   (required)
-    "imgURL": "https://www.imgurl.com/q.png" (optional)
+    "day": "MONDAY",                          (required)
+    "timeSlot": "BREAKFAST",                  (required)
+    "name": "Masala Dosa",                    (required)
+    "imgURL": "https://www.imgurl.com/q.png", (optional)
+    "foodType": "VEG",                        (required)
+    "category": "MAIN_COURSE"                 (required)
+
   }
   ```
 
@@ -123,11 +126,13 @@ Update an existing menu item.
 - Body:
   ```json
   {
-    "name": "Masala Dosa",                   (optional)
-    "imgURL": "https://www.imgurl.com/q.png" (optional)
+    "name": "Masala Dosa",                    (optional)
+    "imgURL": "https://www.imgurl.com/q.png", (optional)
+    "foodType": "VEG",                        (optional)
+    "category": "MAIN_COURSE"                 (optional)
   }
   ```
-  Both `name` and `imgURL` are optional. At least one of them should be provided.
+  At least one of them should be provided.
   It won't update the `day` and `timeSlot` of the menu item.
 
 ### Response
