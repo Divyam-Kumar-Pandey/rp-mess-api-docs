@@ -49,12 +49,12 @@ Register a new user based on their roll number, password, and name.
     {
       "success": false,
       "data": null,
-      "error": "Invalid Request Body. Required fields: rollNumber, password, name"
+      "error": "Invalid Request Body."
     }
     ```
 
 - **User Not Found**
-  - **Status: 400 Bad Request**
+  - **Status: 404 Bad Request**
   - **Body:**
     ```json
     {
@@ -65,24 +65,13 @@ Register a new user based on their roll number, password, and name.
     ```
 
 - **User Already Exists**
-  - **Status: 400 Bad Request**
+  - **Status: 409 Bad Request**
   - **Body:**
     ```json
     {
       "success": false,
       "data": null,
       "error": "User already exists"
-    }
-    ```
-
-- **Email Already Exists**
-  - **Status: 400 Bad Request**
-  - **Body:**
-    ```json
-    {
-      "success": false,
-      "data": null,
-      "error": "Email already exists"
     }
     ```
 
