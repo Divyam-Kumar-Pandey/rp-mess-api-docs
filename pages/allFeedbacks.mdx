@@ -1,0 +1,67 @@
+# All Feedback API
+
+## Get Feedback
+
+Get all the feedbacks submitted by the students
+
+### Request
+
+- **Method:** GET
+- **Can be accessed by:** Users with roles: ADMIN, SUPERADMIN, STAFF
+- **URL:** `/api/all-feedbacks`
+- **Headers:**
+  - Authorization: Bearer `<access_token>`
+- **Query Parameters:**
+  - `status` (optional): Filter feedbacks by status. Possible values: `NOT_STARTED`, `PENDING`, `COMPLETED`. Default: Sends all feedbacks
+  - `limit` (optional): Number of feedbacks to return. Default: 10
+  - `page` (optional): Page number. Default: 1 
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": [
+      {
+        "id": "feedback_id",
+        "rollNumber": "123456",
+        "name": "John Doe",
+        "subject": "Feedback Subject",
+        "body": "Feedback Body",
+        "status": "NOT_STARTED",                    // NOT_STARTED, PENDING, COMPLETED
+        "imgUrl": "https://example.com/image.jpg",
+        "createdAt": "2024-08-03T12:34:56Z"
+      },
+      ...
+    ],
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "An error occurred while processing your request"
+    }
+    ```
+
+---

@@ -23,8 +23,10 @@ Retrieve feedback for the authenticated user.
       {
         "id": "feedback_id",
         "rollNumber": "123456",
+        "name": "John Doe",
         "subject": "Feedback Subject",
         "body": "Feedback Body",
+        "status": "NOT_STARTED",                    // NOT_STARTED, PENDING, COMPLETED
         "imgUrl": "https://example.com/image.jpg",
         "createdAt": "2024-08-03T12:34:56Z"
       },
@@ -90,8 +92,10 @@ Add a new feedback entry.
     "data": {
       "_id": "feedback_id",
       "rollNumber": "123456",
+      "name": "John Doe",
       "subject": "Feedback Subject",
       "body": "Feedback Body",
+      "status": "NOT_STARTED",
       "imgUrl": "https://example.com/image.jpg",
       "createdAt": "2024-08-03T12:34:56Z"
     },
