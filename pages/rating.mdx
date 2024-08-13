@@ -1,0 +1,190 @@
+# Rating API
+
+## Get Ratings
+
+Retrieve ratings for a specific date for the authenticated user.
+
+### Request
+
+- **Method:** GET
+- **Can be accessed by:** Users with roles: STUDENT, STAFF, ADMIN, SUPERADMIN
+- **URL:** `/api/rating?date=<dd-mm-yyyy>`
+- **Headers:**
+  - Authorization: Bearer `<access_token>`
+- **Query Parameters:**
+  - `date`: The date for which ratings are to be retrieved in `dd-mm-yyyy` format.
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": [
+      {
+        "rollNumber": "123456",
+        "rating": 4,
+        "timeSlot": "LUNCH",
+        "date": "04-08-2024"
+      },
+      ...
+    ],
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Invalid Date Format**
+  - **Status: 400 Bad Request**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": {
+        "message": "Invalid date format. Expected format: dd-mm-yyyy"
+      }
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "An error occurred while processing your request"
+    }
+    ```
+
+---
+
+## Add Ratings
+
+Add new ratings for the authenticated user.
+
+### Request
+
+- **Method:** POST
+- **Can be accessed by:** Users with roles: STUDENT, STAFF, ADMIN, SUPERADMIN
+- **URL:** `/api/rating`
+- **Headers:**
+  - Authorization: Bearer `<access_token>`
+- **Body:**
+  ```json
+  [
+    {
+      "rating": 3,
+      "timeSlot": "LUNCH",
+      "date": "04-08-2024"
+    },
+    {
+      "rating": 4,
+      "timeSlot": "SNACKS",
+      "date": "04-08-2024"
+    },
+    {
+      "rating": 2,
+      "timeSlot": "DINNER",
+      "date": "04-08-2024"
+    }
+  ]
+  ```
+    - `rating`: The rating to be added (1-5).
+    - `timeSlot`: The time slot for which the rating is to be added (BREAKFAST, LUNCH, SNACKS, DINNER).
+    - `date`: The date for which the rating is to be added in `dd-mm-yyyy` format.
+
+    Array can contain multiple ratings for different time slots and dates.
+
+### Response
+
+- **Status: 200 OK**
+- **Body:**
+  ```json
+  {
+    "success": true,
+    "data": {
+      "message": "Ratings added successfully"
+    },
+    "error": null
+  }
+  ```
+
+### Error Responses
+
+- **Unauthorized Access**
+  - **Status: 401 Unauthorized**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "Unauthorized"
+    }
+    ```
+
+- **Invalid Request Body**
+  - **Status: 400 Bad Request**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": {
+        "message": "Request body should contain rating, timeSlot and date"
+      }
+    }
+    ```
+
+- **Invalid Body Format**
+  - **Status: 400 Bad Request**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": {
+        "message": "Request body should be an array"
+      }
+    }
+    ```
+
+- **Empty Request Body**
+  - **Status: 400 Bad Request**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": {
+        "message": "Request body should not be empty"
+      }
+    }
+    ```
+
+- **Server Error**
+  - **Status: 500 Internal Server Error**
+  - **Body:**
+    ```json
+    {
+      "success": false,
+      "data": null,
+      "error": "An error occurred while processing your request"
+    }
+    ```
+
+---
