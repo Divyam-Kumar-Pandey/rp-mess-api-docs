@@ -6,6 +6,8 @@
   "member": "Hall Member",
   "noticeboard": "Noticeboard",
   "feedback": "Feedback",
+  "allFeedbacks": "All Feedbacks",
+  "rating": "Rating",
   "contact": {
       "title": "Contact ↗",
       "type": "page"
